@@ -8,6 +8,9 @@ const Contents = ({
   API_URL_comments,
   setActive,
   active,
+  loading,
+  internet,
+  catchError,
 }) => {
   return (
     <main>
@@ -40,7 +43,44 @@ const Contents = ({
           Comments
         </button>
       </div>
+      {loading && (
+        <p
+          style={{
+            color: "#00f",
+            margin: "5rem",
+            fontSize: "24px",
+            textAlign: "center",
+          }}
+        >
+          loading...
+        </p>
+      )}
 
+      {!internet && (
+        <p
+          style={{
+            color: "#f00",
+            margin: "5rem",
+            fontSize: "20px",
+            textAlign: "center",
+          }}
+        >
+          Check your internet connections and try again.
+        </p>
+      )}
+
+      {catchError && (
+        <p
+          style={{
+            color: "#f00",
+            margin: "5rem",
+            fontSize: "20px",
+            textAlign: "center",
+          }}
+        >
+          Unable to fecth the required data
+        </p>
+      )}
       <section>
         <ul>
           {dataObjs.map((obj) => (
